@@ -14,10 +14,10 @@ export default function FinancialAnalysisHomepage() {
   const [market, setMarket] = useState("")
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState<any>({})
   const validateStep = () => {
 
-  let newErrors = {}
+  let newErrors: any = {}
 
   if (step === 1) {
 

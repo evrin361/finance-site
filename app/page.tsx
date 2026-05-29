@@ -172,7 +172,7 @@ ${message}`
             <span className="absolute -bottom-3 right-0 w-full h-[3px] bg-yellow-400 rounded-full"></span>
           </a>
 
-          <<a
+          <a
             onClick={() => scrollToSection("services")}
             className="cursor-pointer"
           >

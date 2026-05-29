@@ -4,6 +4,12 @@ import { useState, useEffect } from "react"
 
 import { motion, AnimatePresence } from "framer-motion"
 import toast, { Toaster } from "react-hot-toast"
+import {
+  BarChart3,
+  Bitcoin,
+  Coins,
+  TrendingUp
+} from "lucide-react"
 export default function FinancialAnalysisHomepage() {
 
   const [step, setStep] = useState(1)
@@ -463,7 +469,7 @@ ${message}`
                 className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl p-8 transition-all hover:-translate-y-2"
               >
                 <div className="w-16 h-16 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 text-2xl mb-6">
-                  📈
+                  {service.icon}
                 </div>
 
                 <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
@@ -496,6 +502,27 @@ ${message}`
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
       {[
+  {
+    title: 'تحلیل سهام',
+    desc: 'بررسی روند سهم‌ها، نقاط ورود و خروج و تحلیل تکنیکال و بنیادی.',
+    icon: <BarChart3 size={40} className="text-yellow-400" />
+  },
+  {
+    title: 'تحلیل ارز دیجیتال',
+    desc: 'تحلیل بیت‌کوین، اتریوم و سایر رمزارزها با استراتژی حرفه‌ای.',
+    icon: <Bitcoin size={40} className="text-yellow-400" />
+  },
+  {
+    title: 'تحلیل طلا',
+    desc: 'بررسی روند اونس جهانی و بازار طلا برای سرمایه‌گذاری بهتر.',
+    icon: <Coins size={40} className="text-yellow-400" />
+  },
+  {
+    title: 'تحلیل فارکس',
+    desc: 'تحلیل جفت‌ارزها و بازار جهانی با مدیریت ریسک حرفه‌ای.',
+    icon: <TrendingUp size={40} className="text-yellow-400" />
+  }
+]
         {
           market: "بورس",
           title: "تحلیل سهم فولاد",

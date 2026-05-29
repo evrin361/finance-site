@@ -17,7 +17,7 @@ import {
 
 export default function AdminPage() {
   const router = useRouter()
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState<any[]>([])
 
   useEffect(() => {
     const admin = localStorage.getItem("admin")

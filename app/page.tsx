@@ -15,6 +15,15 @@ export default function FinancialAnalysisHomepage() {
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
   const [errors, setErrors] = useState<any>({})
+  const scrollToSection = (id: string) => {
+  const section = document.getElementById(id)
+
+  if (section) {
+    section.scrollIntoView({
+      behavior: "smooth",
+    })
+  }
+}
   const validateStep = () => {
 
   let newErrors: any = {}
@@ -163,20 +172,28 @@ ${message}`
             <span className="absolute -bottom-3 right-0 w-full h-[3px] bg-yellow-400 rounded-full"></span>
           </a>
 
-          <a href="#services" className="hover:text-yellow-400 transition">
+          <<a
+            onClick={() => scrollToSection("services")}
+            className="cursor-pointer"
+          >
             خدمات
           </a>
 
-          <a href="#pricing" className="hover:text-yellow-400 transition">
+          
+
+          <a
+            onClick={() => scrollToSection("pricing")}
+            className="cursor-pointer"
+          >
             تعرفه
           </a>
 
           <a
-            href="#contact"
-            className="hover:text-yellow-400 transition"
-          >
-            تماس با ما
-          </a>
+          onClick={() => scrollToSection("contact")}
+          className="cursor-pointer"
+           >
+          تماس با ما
+        </a>
 
         </nav>
 
@@ -383,7 +400,7 @@ ${message}`
                 <div className="bg-black/30 rounded-2xl p-5 border border-white/5">
                   <p className="text-gray-400 text-sm">هزینه تحلیل</p>
                   <h3 className="text-3xl font-black mt-3 text-yellow-400">
-                    ۱ میلیون
+                    ۵ میلیون
                   </h3>
                   <p className="text-gray-500 mt-2 text-sm">تومان</p>
                 </div>

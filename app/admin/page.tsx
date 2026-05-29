@@ -42,7 +42,7 @@ export default function AdminPage() {
     }
   }
 
-  const changeStatus = async (id, currentStatus) => {
+  const changeStatus = async (id: number, currentStatus: string) => {
     let newStatus = "جدید"
     if (currentStatus === "جدید") newStatus = "درحال بررسی"
     else if (currentStatus === "درحال بررسی") newStatus = "انجام شد"
@@ -56,7 +56,7 @@ export default function AdminPage() {
     if (!error) fetchOrders()
   }
 
-  const deleteOrder = async (id) => {
+  const deleteOrder = async (id: number) => {
     if (!confirm("از حذف این سفارش مطمئنی؟")) return
     const { error } = await supabase.from("orders").delete().eq("id", id)
     if (!error) fetchOrders()

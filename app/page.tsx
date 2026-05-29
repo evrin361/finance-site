@@ -759,7 +759,7 @@ ${message}`
                     <textarea
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      rows="5"
+                      rows={5} // عدد به جای رشته
                       className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl pr-6 pl-6 py-5 outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300 text-white placeholder:text-gray-500"
                       placeholder="نماد، توضیحات و هدف سرمایه‌گذاری خود را وارد کنید"
                     ></textarea>

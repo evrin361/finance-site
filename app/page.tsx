@@ -330,9 +330,22 @@ ${message}`
             </div>
 
             <h1 className="text-[42px] md:text-[68px] font-black leading-[1.15] mb-8 tracking-tight">              تحلیل حرفه‌ای
-               <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 bg-clip-text text-transparent block mt-4">
-                سهام، طلا، کریپتو و فارکس
-              </span>
+               <span
+                  className="
+                    bg-gradient-to-r
+                    from-yellow-300
+                    via-yellow-400
+                    to-yellow-600
+                    bg-clip-text
+                    text-transparent
+                    [-webkit-background-clip:text]
+                    [-webkit-text-fill-color:transparent]
+                    block
+                    mt-4
+                  "
+                >
+                  سهام، طلا، کریپتو و فارکس
+                </span>
             </h1>
 
             <p className="text-gray-300/90 text-xl leading-[2.2] mb-12 max-w-2xl mx-auto lg:mx-0">

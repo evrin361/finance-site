@@ -1,7 +1,7 @@
 "use client"
 import { supabase } from "@/lib/supabase"
 import { useState, useEffect } from "react"
-ٖimport { Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion"
 import toast, { Toaster } from "react-hot-toast"
 import {

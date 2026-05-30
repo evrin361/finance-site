@@ -316,7 +316,17 @@ ${message}`
            <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32 grid lg:grid-cols-2 gap-14 items-center">
              <div className="text-center lg:text-right">
             <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-yellow-500/20 text-yellow-300 px-6 py-3 rounded-full text-sm mb-8 shadow-lg shadow-yellow-500/10 mx-auto lg:mx-0">
-            ✨ تحلیل تخصصی و هوشمند بازارهای مالی
+            ٖimport { Sparkles } from "lucide-react";
+            <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-yellow-500/20 text-yellow-300 px-6 py-3 rounded-full text-sm mb-8 shadow-lg shadow-yellow-500/10 mx-auto lg:mx-0">
+
+              <Sparkles size={16} className="text-yellow-400" />
+
+              <span>
+                تحلیل تخصصی و هوشمند بازارهای مالی
+              </span>
+
+            </div>
+            
             </div>
 
             <h1 className="text-[42px] md:text-[68px] font-black leading-[1.15] mb-8 tracking-tight">              تحلیل حرفه‌ای

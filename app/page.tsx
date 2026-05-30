@@ -317,7 +317,7 @@ ${message}`
              <div className="text-center lg:text-right">
             <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-yellow-500/20 text-yellow-300 px-6 py-3 rounded-full text-sm mb-8 shadow-lg shadow-yellow-500/10 mx-auto lg:mx-0">
             
-            <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-yellow-500/20 text-yellow-300 px-6 py-3 rounded-full text-sm mb-8 shadow-lg shadow-yellow-500/10 mx-auto lg:mx-0">
+            
 
               <Sparkles size={16} className="text-yellow-400" />
 
@@ -325,7 +325,7 @@ ${message}`
                 تحلیل تخصصی و هوشمند بازارهای مالی
               </span>
 
-            </div>
+            
             
             </div>
 

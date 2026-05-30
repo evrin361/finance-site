@@ -509,26 +509,25 @@ ${message}`
 
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      {[
+      {
+      [
   {
-    title: 'تحلیل سهام',
-    desc: 'بررسی روند سهم‌ها، نقاط ورود و خروج و تحلیل تکنیکال و بنیادی.',
-    icon: <BarChart3 size={40} className="text-yellow-400" />
+    market: "بورس",
+    title: "تحلیل سهم فولاد",
+    result: "+18%",
+    desc: "بررسی تکنیکال و بنیادی سهم فولاد با تعیین نقاط ورود و خروج."
   },
   {
-    title: 'تحلیل ارز دیجیتال',
-    desc: 'تحلیل بیت‌کوین، اتریوم و سایر رمزارزها با استراتژی حرفه‌ای.',
-    icon: <Bitcoin size={40} className="text-yellow-400" />
+    market: "کریپتو",
+    title: "تحلیل بیت‌کوین",
+    result: "+24%",
+    desc: "تحلیل روند بیت‌کوین و سناریوهای احتمالی حرکت قیمت."
   },
   {
-    title: 'تحلیل طلا',
-    desc: 'بررسی روند اونس جهانی و بازار طلا برای سرمایه‌گذاری بهتر.',
-    icon: <Coins size={40} className="text-yellow-400" />
-  },
-  {
-    title: 'تحلیل فارکس',
-    desc: 'تحلیل جفت‌ارزها و بازار جهانی با مدیریت ریسک حرفه‌ای.',
-    icon: <TrendingUp size={40} className="text-yellow-400" />
+    market: "طلا",
+    title: "تحلیل اونس جهانی",
+    result: "+11%",
+    desc: "بررسی روند اونس جهانی و تاثیر آن بر بازار طلا."
   }
 ]
 

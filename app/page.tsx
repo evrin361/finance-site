@@ -295,6 +295,7 @@ ${message}`
   </div>
 
 </header>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-22">
 <div className="absolute inset-0 overflow-hidden">
@@ -312,9 +313,9 @@ ${message}`
   <div className="absolute top-[35%] left-[45%] w-[180px] h-[180px] bg-yellow-400/10 blur-[90px] rounded-full"></div>
 
 </div>
-        <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32 grid lg:grid-cols-2 gap-14 items-center">
-          <div>
-<div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-yellow-500/20 text-yellow-300 px-6 py-3 rounded-full text-sm mb-8 shadow-lg shadow-yellow-500/10">  
+           <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32 grid lg:grid-cols-2 gap-14 items-center">
+             <div className="text-center lg:text-right">
+            <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-yellow-500/20 text-yellow-300 px-6 py-3 rounded-full text-sm mb-8 shadow-lg shadow-yellow-500/10 mx-auto lg:mx-0">
             ✨ تحلیل تخصصی و هوشمند بازارهای مالی
             </div>
 
@@ -324,12 +325,12 @@ ${message}`
               </span>
             </h1>
 
-            <p className="text-gray-300/90 text-xl leading-[2.2] mb-12 max-w-2xl">
+            <p className="text-gray-300/90 text-xl leading-[2.2] mb-12 max-w-2xl mx-auto lg:mx-0">
               تصمیم‌های مالی مطمئن با تحلیل‌های دقیق، گزارش‌های قابل فهم و
               پشتیبانی تخصصی ۶ ماهه برای سرمایه‌گذاران حرفه‌ای و تازه‌کار.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <a
                 href="#order-form"
                 className="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:scale-105 hover:shadow-yellow-500/30 text-black px-10 py-5 rounded-2xl font-black text-lg transition-all duration-300 shadow-2xl inline-flex items-center justify-center"
@@ -345,18 +346,18 @@ ${message}`
               </a>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 mt-14 max-w-xl">
-              <div>
+            <div className="grid grid-cols-3 gap-6 mt-14 max-w-xl mx-auto lg:mx-0">
+              <div className="text-center">
                 <h3 className="text-3xl font-black text-yellow-400">۶ ماه</h3>
                 <p className="text-gray-400 mt-2">پشتیبانی تخصصی</p>
               </div>
 
-              <div>
+              <div className="text-center">
                 <h3 className="text-3xl font-black text-yellow-400">+۴ بازار</h3>
                 <p className="text-gray-400 mt-2">تحلیل حرفه‌ای</p>
               </div>
 
-              <div>
+             <div className="text-center">
                 <h3 className="text-3xl font-black text-yellow-400">۲۴/۷</h3>
                 <p className="text-gray-400 mt-2">پاسخگویی سریع</p>
               </div>
@@ -366,7 +367,7 @@ ${message}`
           {/* Chart Card */}
           <div className="relative">
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 shadow-2xl">
-              <div className="flex items-center justify-between mb-8">
+              <div className="flex flex-col items-center text-center mb-8 gap-4">
                 <div>
                   <p className="text-gray-400">وضعیت بازار</p>
                   <h3 className="text-2xl font-bold mt-2">تحلیل هوشمند سرمایه</h3>
@@ -403,7 +404,7 @@ ${message}`
               </div>
 
               <div className="grid grid-cols-2 gap-5 mt-10">
-                <div className="bg-black/30 rounded-2xl p-5 border border-white/5">
+                <div className="bg-black/30 rounded-2xl p-5 border border-white/5 text-center">
                   <p className="text-gray-400 text-sm">هزینه تحلیل</p>
                   <h3 className="text-3xl font-black mt-3 text-yellow-400">
                     ۵ میلیون
@@ -411,7 +412,7 @@ ${message}`
                   <p className="text-gray-500 mt-2 text-sm">تومان</p>
                 </div>
 
-                <div className="bg-black/30 rounded-2xl p-5 border border-white/5">
+                <div className="bg-black/30 rounded-2xl p-5 border border-white/5 text-center">
                   <p className="text-gray-400 text-sm">گزارش تکمیلی</p>
                   <h3 className="text-3xl font-black mt-3 text-green-400">
                     ماهانه
@@ -474,9 +475,9 @@ ${message}`
             ].map((service, index) => (
               <div
                 key={index}
-                className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl p-8 transition-all hover:-translate-y-2"
+                className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-3xl p-8 transition-all hover:-translate-y-2 text-center"
               >
-                <div className="w-16 h-16 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 text-2xl mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 text-2xl mb-6 mx-auto">
                   {service.icon}
                 </div>
 
@@ -535,21 +536,21 @@ ${message}`
 
         <div
           key={index}
-          className="group relative overflow-hidden bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[32px] p-8 hover:border-yellow-400/30 hover:-translate-y-2 transition-all duration-500"
-        >
+          className="group relative overflow-hidden bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[32px] p-8 hover:border-yellow-400/30 hover:-translate-y-2 transition-all duration-500 text-center"
+         >
 
           {/* Glow */}
           <div className="absolute top-[-80px] left-[-80px] w-40 h-40 bg-yellow-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
           <div className="relative z-10">
 
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col items-center gap-3 mb-6">
 
               <div className="bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-4 py-2 rounded-xl text-sm">
                 {item.market}
               </div>
 
-              <div className="text-green-400 font-black text-xl">
+              <div className="text-green-400 font-black text-xl text-center">
                 {item.result}
               </div>
 
@@ -580,7 +581,7 @@ ${message}`
 
       <section id="order-form" className="py-24">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+          <div className="text-center lg:text-right">
             <p className="text-yellow-400 font-semibold mb-4">چرا ما؟</p>
             <h2 className="text-4xl font-black leading-tight mb-8">
               تحلیل دقیق برای
@@ -599,7 +600,7 @@ ${message}`
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-4 bg-white/5 rounded-2xl p-5 border border-white/5"
+                  className="flex flex-col lg:flex-row items-center gap-4 bg-white/5 rounded-2xl p-5 border border-white/5 text-center lg:text-right"
                 >
                   <div className="w-10 h-10 rounded-full bg-yellow-500 text-black flex items-center justify-center font-black">
                     ✓
@@ -648,7 +649,7 @@ ${message}`
 
 </div>
 
-<div className="relative z-10">
+<div className="relative z-10 text-center">
               <h3 className="text-5xl font-black mb-5 leading-tight tracking-tight">            
                    ثبت سفارش تحلیل
               </h3>
@@ -852,7 +853,7 @@ ${message}`
 
             <p className="text-gray-300 text-xl mb-10">تومان برای هر تحلیل تخصصی</p>
 
-            <div className="grid md:grid-cols-2 gap-5 text-right mb-10">
+            <div className="grid md:grid-cols-2 gap-5 text-center mb-10">
               {[
                 'تحلیل کامل و تخصصی',
                 'گزارش قابل فهم',
@@ -861,7 +862,7 @@ ${message}`
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="bg-black/20 border border-white/5 rounded-2xl p-5"
+                  className="bg-black/20 border border-white/5 rounded-2xl p-5 text-center"
                 >
                   {item}
                 </div>
@@ -911,10 +912,10 @@ ${message}`
             <a
               href="https://wa.me/989927320627"
               target="_blank"
-              className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-[32px] p-8 transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl"
+              className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-[32px] p-8 transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl text-center"
             >
 
-              <div className="w-20 h-20 rounded-3xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-4xl mb-8">
+              <div className="w-20 h-20 rounded-3xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-4xl mb-8 mx-auto">
                 💬
               </div>
 
@@ -926,7 +927,7 @@ ${message}`
                 پاسخگویی سریع برای مشاوره و ثبت سفارش تحلیل تخصصی بازارهای مالی.
               </p>
 
-              <div className="text-green-400 font-bold text-lg">
+              <div className="text-green-400 font-bold text-lg text-center">
                 شروع گفتگو →
               </div>
 
@@ -936,10 +937,10 @@ ${message}`
             <a
               href="https://t.me/SmartTahlil"
               target="_blank"
-              className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-[32px] p-8 transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl"
+              className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-[32px] p-8 transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl text-center"
             >
 
-              <div className="w-20 h-20 rounded-3xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-4xl mb-8">
+              <div className="w-20 h-20 rounded-3xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-4xl mb-8 mx-auto">
                 ✈️
               </div>
 
@@ -951,7 +952,7 @@ ${message}`
                 ارتباط مستقیم با تیم اسمارت تحلیل و دریافت پشتیبانی سریع.
               </p>
 
-              <div className="text-blue-400 font-bold text-lg">
+              <div className="text-blue-400 font-bold text-lg text-center">
                 ورود به تلگرام →
               </div>
 
@@ -960,10 +961,10 @@ ${message}`
             {/* Rubika */}
             <a
               href="https://rubika.ir/SmartTahlil"
-              className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-[32px] p-8 transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl"
+              className="group bg-white/5 hover:bg-white/10 border border-white/10 rounded-[32px] p-8 transition-all duration-300 hover:-translate-y-2 backdrop-blur-xl text-center"
             >
 
-              <div className="w-20 h-20 rounded-3xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-4xl mb-8">
+              <div className="w-20 h-20 rounded-3xl bg-green-500/10 border border-green-500/20 flex items-center justify-center text-4xl mb-8 mx-auto">
                 📱
               </div>
 
@@ -975,7 +976,7 @@ ${message}`
                 ارتباط و پشتیبانی از طریق پیام‌رسان روبیکا برای کاربران داخلی.
               </p>
 
-              <div className="text-yellow-400 font-bold text-lg">
+              <div className="text-yellow-400 font-bold text-lg text-center">
                 ارتباط در روبیکا →
               </div>
 
@@ -991,10 +992,10 @@ ${message}`
 {/* Footer */}
 {/* Footer */}
 <footer id="contact" className="border-t border-white/10 py-14">
-  <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-start justify-between gap-16">
+  <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-16">
 
     {/* RIGHT */}
-    <div className="max-w-md text-right">
+    <div className="max-w-md text-center md:text-right">
       <h3 className="text-3xl font-black text-yellow-400 mb-4">
         SmartTahlil
       </h3>

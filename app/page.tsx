@@ -1,7 +1,7 @@
 "use client"
 import { supabase } from "@/lib/supabase"
 import { useState, useEffect } from "react"
-
+ٖimport { Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion"
 import toast, { Toaster } from "react-hot-toast"
 import {
@@ -316,7 +316,7 @@ ${message}`
            <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32 grid lg:grid-cols-2 gap-14 items-center">
              <div className="text-center lg:text-right">
             <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-yellow-500/20 text-yellow-300 px-6 py-3 rounded-full text-sm mb-8 shadow-lg shadow-yellow-500/10 mx-auto lg:mx-0">
-            ٖimport { Sparkles } from "lucide-react";
+            
             <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-yellow-500/20 text-yellow-300 px-6 py-3 rounded-full text-sm mb-8 shadow-lg shadow-yellow-500/10 mx-auto lg:mx-0">
 
               <Sparkles size={16} className="text-yellow-400" />

@@ -1,3 +1,4 @@
+import Image from "next/image";
 type Props = {
   params: {
     slug: string;
@@ -14,12 +15,28 @@ export default function AnalysisPage({ params }: Props) {
 
       <section className="mb-12">
 
-        <span className="inline-block px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-400 text-sm mb-4">
-          تحلیل آرشیوی
-        </span>
+        <span
+            className="
+                inline-block
+                px-4
+                py-2
+                rounded-full
+                bg-yellow-500/10
+                border
+                border-yellow-500/30
+                text-yellow-400
+                text-sm
+                mb-4
+            "
+            >
+            تحلیل آرشیوی SmartTahlil
+            </span>
 
-        <h1 className="text-5xl font-bold mb-4">
-          تحلیل دلار آزاد ایران
+            
+
+
+       <h1 className="text-5xl font-bold mb-4 text-yellow-500">
+        تحلیل دلار آزاد ایران
         </h1>
 
         <p className="text-gray-400 text-lg mb-2">
@@ -33,7 +50,16 @@ export default function AnalysisPage({ params }: Props) {
       </section>
         <section className="mb-12">
 
-        <div className="border border-yellow-500/30 rounded-2xl p-6 bg-yellow-500/5">
+        <div
+            className="
+                bg-zinc-900
+                border
+                border-zinc-800
+                rounded-3xl
+                p-8
+                shadow-lg
+            "
+            >
 
             <h2 className="text-xl font-semibold mb-3">
             ارزیابی SmartTahlil
@@ -50,6 +76,17 @@ export default function AnalysisPage({ params }: Props) {
            
         </section>
          <section className="mb-12">
+
+        <div
+        className="
+            bg-zinc-900
+            border
+            border-zinc-800
+            rounded-3xl
+            p-8
+        "
+        >
+
 
             <h2 className="text-3xl font-bold mb-6">
                 خلاصه مدیریتی تحلیل
@@ -71,10 +108,18 @@ export default function AnalysisPage({ params }: Props) {
                 </p>
 
             </div>
-
+</div>
             </section>
             <section className="mb-12">
-
+<div
+        className="
+            bg-zinc-900
+            border
+            border-zinc-800
+            rounded-3xl
+            p-8
+        "
+        >
             <h2 className="text-3xl font-bold mb-8">
                 تحلیل رایگان SmartTahlil
             </h2>
@@ -138,20 +183,43 @@ export default function AnalysisPage({ params }: Props) {
                 </div>
 
             </div>
-
+</div>
             </section>
 
             <section className="mb-12">
 
-            <div className="border border-yellow-500 rounded-3xl p-8 bg-yellow-500/10">
+            <div
+                className="
+                    border
+                    border-yellow-500/40
+                    rounded-3xl
+                    p-8
+                    bg-gradient-to-br
+                    from-yellow-500/10
+                    to-yellow-500/5
+                    shadow-xl
+                "
+                >
 
                 <div className="mb-6">
 
-                <span className="inline-block px-3 py-1 rounded-full bg-yellow-500 text-black font-semibold text-sm mb-4">
-                    PREMIUM
-                </span>
+                <span
+                    className="
+                        inline-block
+                        px-4
+                        py-2
+                        rounded-full
+                        bg-yellow-500
+                        text-black
+                        font-bold
+                        text-sm
+                        mb-4
+                    "
+                    >
+                    PREMIUM SMARTTAHLIL
+                    </span>
 
-                <h2 className="text-3xl font-bold mb-3">
+                <h2 className="text-3xl font-bold mb-3 text-yellow-400">
                     نسخه حرفه‌ای SmartTahlil
                 </h2>
 
@@ -188,7 +256,7 @@ export default function AnalysisPage({ params }: Props) {
 
 <section className="mb-16 text-center">
 
-  <h2 className="text-3xl font-bold mb-4">
+  <h2 className="text-3xl font-bold mb-4 text-yellow-400">
     تحلیل اختصاصی نیاز داری؟
   </h2>
 
@@ -197,20 +265,31 @@ export default function AnalysisPage({ params }: Props) {
   </p>
 
   <button
-    className="
-      px-8
-      py-4
-      rounded-2xl
-      bg-yellow-500
-      text-black
-      font-bold
-      text-lg
-      hover:scale-105
-      transition
-    "
-  >
-    🚀 سفارش تحلیل اختصاصی
-  </button>
+  className="
+    px-10
+    py-5
+    rounded-2xl
+
+    bg-gradient-to-r
+    from-yellow-500
+    to-yellow-400
+
+    text-black
+    font-extrabold
+
+    text-xl
+
+    shadow-xl
+
+    hover:scale-105
+    hover:shadow-yellow-500/30
+
+    transition-all
+    duration-300
+  "
+>
+  🚀 سفارش تحلیل اختصاصی
+</button>
 
 </section>
 

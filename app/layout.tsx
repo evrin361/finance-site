@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const vazir = Vazirmatn({
   subsets: ["arabic"],
@@ -65,8 +66,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
+
       <body className={vazir.className}>
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ESLVX66EZW"
+          strategy="afterInteractive"
+        />
+
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-ESLVX66EZW');
+          `}
+        </Script>
+
         {children}
+
       </body>
     </html>
   );

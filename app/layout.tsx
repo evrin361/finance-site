@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 const vazir = Vazirmatn({
   subsets: ["arabic"],
 });
@@ -85,9 +86,11 @@ export default function RootLayout({
             gtag('config', 'G-ESLVX66EZW');
           `}
         </Script>
+      <Header />
 
-        {children}
+      {children}
 
+      <Footer />
       </body>
     </html>
   );

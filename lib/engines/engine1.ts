@@ -6,6 +6,8 @@ import { detectOrderBlocks } from "./detectOrderBlocks";
 import { detectFVG } from "./detectFVG";
 import { detectSmartMoneyBehavior } from "./detectSmartMoneyBehavior";
 import { detectMarketStructure } from "./detectMarketStructure";
+import { detectTrend } from "./detectTrend";
+
 
 export interface SMCOutput {
   marketStructure: string;
@@ -50,6 +52,12 @@ export function runSMCEngine(symbol: string, candles: Candle[]): SMCOutput {
   const FVGZones = detectFVG(candles);
   const smartMoney = detectSmartMoneyBehavior(candles);
   const marketStructureData = detectMarketStructure(candles);
+const trendData = detectTrend(
+  candles,
+  marketStructureData.marketStructure as "Bullish" | "Bearish" | "Range",
+  BOS,
+  CHOCH
+);
 
   console.log("🔥 BOS DETECTED:");
   console.log(BOS);
@@ -74,9 +82,13 @@ export function runSMCEngine(symbol: string, candles: Candle[]): SMCOutput {
   console.log("🔥 MARKET STRUCTURE DETECTED:");
   console.log(JSON.stringify(marketStructureData, null, 2));
 
+
+console.log("🔥 TREND DETECTED:");
+console.log(JSON.stringify(trendData, null, 2));
+
   return {
     marketStructure: marketStructureData.marketStructure,
-    trend: "Neutral", // هنوز Trend Detector آماده نیست
+    trend: trendData.trend, // هنوز Trend Detector آماده نیست
     BOS,
     CHOCH,
     buySideLiquidity: liquidity.buySideLiquidity,

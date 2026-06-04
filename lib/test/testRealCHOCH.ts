@@ -20,6 +20,9 @@ async function runCHOCHTest() {
 
     console.log("🔥 FULL SMCAnalysisObject:");
     console.log(JSON.stringify(analysis, null, 2));
+
+    
+
   } catch (error) {
     console.error("❌ Error fetching or running Engine 1:", error);
   }

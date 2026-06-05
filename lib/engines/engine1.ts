@@ -7,6 +7,7 @@ import { detectFVG } from "./detectFVG";
 import { detectSmartMoneyBehavior } from "./detectSmartMoneyBehavior";
 import { detectMarketStructure } from "./detectMarketStructure";
 import { detectTrend } from "./detectTrend";
+import { generateScenarios } from "./scenarioGenerator";
 
 
 export interface SMCOutput {
@@ -59,6 +60,43 @@ const trendData = detectTrend(
   CHOCH
 );
 
+// تولید سناریوها با استفاده از خروجی Engine1
+const scenarios = generateScenarios({
+  marketStructure: marketStructureData.marketStructure,
+  trend: trendData.trend,
+  BOS,
+  CHOCH,
+  buySideLiquidity: liquidity.buySideLiquidity,
+  sellSideLiquidity: liquidity.sellSideLiquidity,
+  liquidityTargets: [],
+  marketPhase: smartMoney.marketPhase,
+  smartMoneyBehavior: smartMoney.smartMoneyBehavior,
+  whaleActivity: smartMoney.whaleActivity,
+  bullishOrderBlocks: orderBlocks.bullishOrderBlocks,
+  bearishOrderBlocks: orderBlocks.bearishOrderBlocks,
+  FVGZones,
+  imbalanceZones: [],
+  aggressiveEntry: null,
+  conservativeEntry: null,
+  stopLoss: null,
+  target1: null,
+  target2: null,
+  target3: null,
+  riskReward: null,
+  capitalManagement: "Not Calculated",
+  positionSizing: "Not Calculated",
+  bullishScenario: "None",
+  bearishScenario: "None",
+  tradePlan: "None",
+  profitTakingPlan: "None",
+  stopLossManagement: "None",
+  positionManagement: "None",
+  marketStatus: "Neutral",
+  confidenceLevel: 50,
+  whyAnalysis: "Initial Skeleton",
+});
+
+
   console.log("🔥 BOS DETECTED:");
   console.log(BOS);
 
@@ -110,14 +148,15 @@ console.log(JSON.stringify(trendData, null, 2));
     riskReward: null,
     capitalManagement: "Not Calculated",
     positionSizing: "Not Calculated",
-    bullishScenario: "None",
-    bearishScenario: "None",
-    tradePlan: "None",
+    bullishScenario: scenarios[0]?.title ?? "None",
+    bearishScenario: scenarios[1]?.title ?? "None",
+    tradePlan: scenarios[2]?.title ?? "None",
     profitTakingPlan: "None",
     stopLossManagement: "None",
     positionManagement: "None",
     marketStatus: "Neutral",
     confidenceLevel: 50,
     whyAnalysis: "Initial Skeleton",
+    
   };
 }

@@ -9,6 +9,7 @@ import { detectMarketStructure } from "./detectMarketStructure";
 import { detectTrend } from "./detectTrend";
 import { generateScenarios } from "./scenarioGenerator";
 import { calculateRiskReward } from "./riskRewardEngine";
+import { generateTradePlan } from "./tradePlanningEngine";
 
 export interface SMCOutput {
   marketStructure: string;
@@ -159,6 +160,40 @@ const riskRewardOutput = calculateRiskReward({
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
 });
+const tradePlanOutput = generateTradePlan({
+  marketStructure: marketStructureData.marketStructure,
+  trend: trendData.trend,
+  BOS,
+  CHOCH,
+  buySideLiquidity: liquidity.buySideLiquidity,
+  sellSideLiquidity: liquidity.sellSideLiquidity,
+  liquidityTargets: [],
+  marketPhase: smartMoney.marketPhase,
+  smartMoneyBehavior: smartMoney.smartMoneyBehavior,
+  whaleActivity: smartMoney.whaleActivity,
+  bullishOrderBlocks: orderBlocks.bullishOrderBlocks,
+  bearishOrderBlocks: orderBlocks.bearishOrderBlocks,
+  FVGZones,
+  imbalanceZones: [],
+  aggressiveEntry: riskRewardOutput.entries.aggressive,
+  conservativeEntry: riskRewardOutput.entries.conservative,
+  stopLoss: riskRewardOutput.stopLoss,
+  target1: riskRewardOutput.targets.target1,
+  target2: riskRewardOutput.targets.target2,
+  target3: riskRewardOutput.targets.target3,
+  riskReward: riskRewardOutput.riskReward,
+  capitalManagement: "Not Calculated",
+  positionSizing: "Not Calculated",
+  bullishScenario: scenarios[0]?.title ?? "None",
+  bearishScenario: scenarios[1]?.title ?? "None",
+  tradePlan: "None",
+  profitTakingPlan: "None",
+  stopLossManagement: "None",
+  positionManagement: "None",
+  marketStatus: "Neutral",
+  confidenceLevel: 50,
+  whyAnalysis: "Initial Skeleton",
+});
 
   return {
     marketStructure: marketStructureData.marketStructure,
@@ -185,10 +220,10 @@ riskReward: riskRewardOutput.riskReward,    capitalManagement: "Not Calculated",
     positionSizing: "Not Calculated",
     bullishScenario: scenarios[0]?.title ?? "None",
     bearishScenario: scenarios[1]?.title ?? "None",
-    tradePlan: scenarios[2]?.title ?? "None",
-    profitTakingPlan: "None",
-    stopLossManagement: "None",
-    positionManagement: "None",
+    tradePlan: tradePlanOutput.tradePlan,
+profitTakingPlan: tradePlanOutput.profitTakingPlan,
+stopLossManagement: tradePlanOutput.stopLossManagement,
+positionManagement: tradePlanOutput.positionManagement,
     marketStatus: "Neutral",
     confidenceLevel: 50,
     whyAnalysis: "Initial Skeleton",

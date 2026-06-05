@@ -8,7 +8,7 @@ import { detectSmartMoneyBehavior } from "./detectSmartMoneyBehavior";
 import { detectMarketStructure } from "./detectMarketStructure";
 import { detectTrend } from "./detectTrend";
 import { generateScenarios } from "./scenarioGenerator";
-
+import { calculateRiskReward } from "./riskRewardEngine";
 
 export interface SMCOutput {
   marketStructure: string;
@@ -124,6 +124,42 @@ const scenarios = generateScenarios({
 console.log("🔥 TREND DETECTED:");
 console.log(JSON.stringify(trendData, null, 2));
 
+// تولید خروجی Risk/Reward
+const riskRewardOutput = calculateRiskReward({
+  marketStructure: marketStructureData.marketStructure,
+  trend: trendData.trend,
+  BOS,
+  CHOCH,
+  buySideLiquidity: liquidity.buySideLiquidity,
+  sellSideLiquidity: liquidity.sellSideLiquidity,
+  liquidityTargets: [],
+  marketPhase: smartMoney.marketPhase,
+  smartMoneyBehavior: smartMoney.smartMoneyBehavior,
+  whaleActivity: smartMoney.whaleActivity,
+  bullishOrderBlocks: orderBlocks.bullishOrderBlocks,
+  bearishOrderBlocks: orderBlocks.bearishOrderBlocks,
+  FVGZones,
+  imbalanceZones: [],
+  aggressiveEntry: null,
+  conservativeEntry: null,
+  stopLoss: null,
+  target1: null,
+  target2: null,
+  target3: null,
+  riskReward: null,
+  capitalManagement: "Not Calculated",
+  positionSizing: "Not Calculated",
+  bullishScenario: scenarios[0]?.title ?? "None",
+  bearishScenario: scenarios[1]?.title ?? "None",
+  tradePlan: scenarios[2]?.title ?? "None",
+  profitTakingPlan: "None",
+  stopLossManagement: "None",
+  positionManagement: "None",
+  marketStatus: "Neutral",
+  confidenceLevel: 50,
+  whyAnalysis: "Initial Skeleton",
+});
+
   return {
     marketStructure: marketStructureData.marketStructure,
     trend: trendData.trend, // هنوز Trend Detector آماده نیست
@@ -139,14 +175,13 @@ console.log(JSON.stringify(trendData, null, 2));
     bearishOrderBlocks: orderBlocks.bearishOrderBlocks,
     FVGZones,
     imbalanceZones: [],
-    aggressiveEntry: null,
-    conservativeEntry: null,
-    stopLoss: null,
-    target1: null,
-    target2: null,
-    target3: null,
-    riskReward: null,
-    capitalManagement: "Not Calculated",
+    aggressiveEntry: riskRewardOutput.entries.aggressive,
+conservativeEntry: riskRewardOutput.entries.conservative,
+stopLoss: riskRewardOutput.stopLoss,
+target1: riskRewardOutput.targets.target1,
+target2: riskRewardOutput.targets.target2,
+target3: riskRewardOutput.targets.target3,
+riskReward: riskRewardOutput.riskReward,    capitalManagement: "Not Calculated",
     positionSizing: "Not Calculated",
     bullishScenario: scenarios[0]?.title ?? "None",
     bearishScenario: scenarios[1]?.title ?? "None",

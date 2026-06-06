@@ -1,28 +1,40 @@
 import { SMCOutput } from "./engine1";
 import { TradePlanOutput } from "../types/TradePlanOutput";
 
-export function generateTradePlan(engineOutput: SMCOutput): TradePlanOutput {
-  // تعیین Aggressive و Conservative Entry
-  const aggressiveEntry = engineOutput.aggressiveEntry ?? 0;
-  const conservativeEntry = engineOutput.conservativeEntry ?? 0;
+export function generateTradePlan(
+  engineOutput: SMCOutput
+): TradePlanOutput {
 
-  // تعیین Stop Loss
-  let stopLossManagement = "Not Calculated";
-  if (engineOutput.trend === "Bullish") {
-    stopLossManagement = `Stop Loss below ${engineOutput.stopLoss ?? 0}`;
+  const aggressiveEntry =
+    engineOutput.aggressiveEntry ?? 0;
+
+  const conservativeEntry =
+    engineOutput.conservativeEntry ?? 0;
+
+  const trend =
+    engineOutput.trend;
+
+  let tradePlan = "";
+
+  if (trend === "Bullish") {
+    tradePlan =
+      `Bullish setup | Aggressive Entry: ${aggressiveEntry} | Conservative Entry: ${conservativeEntry}`;
+  } else if (trend === "Bearish") {
+    tradePlan =
+      `Bearish setup | Aggressive Entry: ${aggressiveEntry} | Conservative Entry: ${conservativeEntry}`;
+  } else {
+    tradePlan =
+      `Neutral setup | Wait for confirmation`;
   }
-  if (engineOutput.trend === "Bearish") {
-    stopLossManagement = `Stop Loss above ${engineOutput.stopLoss ?? 0}`;
-  }
 
-  // تعیین Profit Taking
-  const profitTakingPlan = `Take Profit Targets: ${engineOutput.target1 ?? 0}, ${engineOutput.target2 ?? 0}, ${engineOutput.target3 ?? 0}`;
+  const profitTakingPlan =
+    `TP1: ${engineOutput.target1} | TP2: ${engineOutput.target2} | TP3: ${engineOutput.target3}`;
 
-  // تعیین Trade Plan کلی
-  const tradePlan = `Aggressive Entry at ${aggressiveEntry}, Conservative at ${conservativeEntry}`;
+  const stopLossManagement =
+    `Stop Loss: ${engineOutput.stopLoss}`;
 
-  // تعیین Position Management
-  const positionManagement = `Follow Risk/Reward: ${engineOutput.riskReward ?? 0}`;
+  const positionManagement =
+    `Risk Reward Ratio: ${engineOutput.riskReward}`;
 
   return {
     tradePlan,

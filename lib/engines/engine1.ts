@@ -11,6 +11,7 @@ import { generateScenarios } from "./scenarioGenerator";
 import { calculateRiskReward } from "./riskRewardEngine";
 import { generateTradePlan } from "./tradePlanningEngine";
 import { generateCapitalManagement } from "./capitalManagementEngine";
+import { generatePremiumLayer } from "./premiumLayerEngine";
 
 export interface SMCOutput {
   marketStructure: string;
@@ -55,12 +56,12 @@ export function runSMCEngine(symbol: string, candles: Candle[]): SMCOutput {
   const FVGZones = detectFVG(candles);
   const smartMoney = detectSmartMoneyBehavior(candles);
   const marketStructureData = detectMarketStructure(candles);
-const trendData = detectTrend(
-  candles,
-  marketStructureData.marketStructure as "Bullish" | "Bearish" | "Range",
-  BOS,
-  CHOCH
-);
+  const trendData = detectTrend(
+    candles,
+    marketStructureData.marketStructure as "Bullish" | "Bearish" | "Range",
+    BOS,
+    CHOCH
+  );
 
 // تولید سناریوها با استفاده از خروجی Engine1
 const scenarios = generateScenarios({
@@ -231,9 +232,63 @@ const capitalManagementOutput = generateCapitalManagement({
   whyAnalysis: "Initial Skeleton",
 });
 
+
+
+const engineOutput: SMCOutput = {
+  marketStructure: marketStructureData.marketStructure,
+  trend: trendData.trend,
+  BOS,
+  CHOCH,
+  buySideLiquidity: liquidity.buySideLiquidity,
+  sellSideLiquidity: liquidity.sellSideLiquidity,
+  liquidityTargets: [],
+  marketPhase: smartMoney.marketPhase,
+  smartMoneyBehavior: smartMoney.smartMoneyBehavior,
+  whaleActivity: smartMoney.whaleActivity,
+  bullishOrderBlocks: orderBlocks.bullishOrderBlocks,
+  bearishOrderBlocks: orderBlocks.bearishOrderBlocks,
+  FVGZones,
+  imbalanceZones: [],
+  aggressiveEntry: riskRewardOutput.entries.aggressive,
+  conservativeEntry: riskRewardOutput.entries.conservative,
+  stopLoss: riskRewardOutput.stopLoss,
+  target1: riskRewardOutput.targets.target1,
+  target2: riskRewardOutput.targets.target2,
+  target3: riskRewardOutput.targets.target3,
+  riskReward: riskRewardOutput.riskReward,
+  capitalManagement: capitalManagementOutput.capitalManagement,
+  positionSizing: capitalManagementOutput.positionSizing,
+  bullishScenario: scenarios[0]?.title ?? "None",
+  bearishScenario: scenarios[1]?.title ?? "None",
+  tradePlan: tradePlanOutput.tradePlan,
+  profitTakingPlan: tradePlanOutput.profitTakingPlan,
+  stopLossManagement: tradePlanOutput.stopLossManagement,
+  positionManagement: tradePlanOutput.positionManagement,
+  marketStatus: "Neutral",
+  confidenceLevel: 50,
+  whyAnalysis: "Initial Skeleton",
+};
+
+const premiumLayerOutput = generatePremiumLayer({
+  ...engineOutput,       // همان SMCOutput اولیه یا شامل tradePlan و capitalManagement
+  aggressiveEntry: riskRewardOutput.entries.aggressive,
+  conservativeEntry: riskRewardOutput.entries.conservative,
+  stopLoss: riskRewardOutput.stopLoss,
+  target1: riskRewardOutput.targets.target1,
+  target2: riskRewardOutput.targets.target2,
+  target3: riskRewardOutput.targets.target3,
+  riskReward: riskRewardOutput.riskReward,
+  capitalManagement: capitalManagementOutput.capitalManagement,
+  positionSizing: capitalManagementOutput.positionSizing,
+  tradePlan: tradePlanOutput.tradePlan,
+  profitTakingPlan: tradePlanOutput.profitTakingPlan,
+  stopLossManagement: tradePlanOutput.stopLossManagement,
+  positionManagement: tradePlanOutput.positionManagement,
+});
+
   return {
     marketStructure: marketStructureData.marketStructure,
-    trend: trendData.trend, // هنوز Trend Detector آماده نیست
+    trend: trendData.trend,
     BOS,
     CHOCH,
     buySideLiquidity: liquidity.buySideLiquidity,
@@ -247,23 +302,22 @@ const capitalManagementOutput = generateCapitalManagement({
     FVGZones,
     imbalanceZones: [],
     aggressiveEntry: riskRewardOutput.entries.aggressive,
-conservativeEntry: riskRewardOutput.entries.conservative,
-stopLoss: riskRewardOutput.stopLoss,
-target1: riskRewardOutput.targets.target1,
-target2: riskRewardOutput.targets.target2,
-target3: riskRewardOutput.targets.target3,
-riskReward: riskRewardOutput.riskReward,    
-capitalManagement: capitalManagementOutput.capitalManagement,
-positionSizing: capitalManagementOutput.positionSizing,
+    conservativeEntry: riskRewardOutput.entries.conservative,
+    stopLoss: riskRewardOutput.stopLoss,
+    target1: riskRewardOutput.targets.target1,
+    target2: riskRewardOutput.targets.target2,
+    target3: riskRewardOutput.targets.target3,
+    riskReward: riskRewardOutput.riskReward,
     bullishScenario: scenarios[0]?.title ?? "None",
     bearishScenario: scenarios[1]?.title ?? "None",
-    tradePlan: tradePlanOutput.tradePlan,
-profitTakingPlan: tradePlanOutput.profitTakingPlan,
-stopLossManagement: tradePlanOutput.stopLossManagement,
-positionManagement: tradePlanOutput.positionManagement,
+    tradePlan: premiumLayerOutput.tradePlan,
+    profitTakingPlan: premiumLayerOutput.profitTakingPlan,
+    stopLossManagement: premiumLayerOutput.stopLossManagement,
+    positionManagement: premiumLayerOutput.positionManagement,
+    capitalManagement: premiumLayerOutput.capitalManagement,
+    positionSizing: premiumLayerOutput.positionSizing,
     marketStatus: "Neutral",
     confidenceLevel: 50,
     whyAnalysis: "Initial Skeleton",
-    
-  };
+};
 }

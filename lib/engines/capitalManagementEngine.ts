@@ -1,7 +1,6 @@
 // lib/engines/capitalManagementEngine.ts
 import { SMCOutput } from "./engine1";
-import { CapitalManagementOutput } from "../types/TradePlanOutput"; // یا ایجاد فایل جدید CapitalManagementOutput.ts
-
+import { CapitalManagementOutput } from "../types/CapitalManagementOutput";
 /**
  * Capital Management Engine - Version 0.1 Operational Logic
  * ورودی: خروجی Engine1 (SMCOutput)

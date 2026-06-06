@@ -5,9 +5,11 @@ async function runCHOCHTest() {
   try {
     // گرفتن داده واقعی از API
     const res = await fetch("http://localhost:3000/api/crypto/btcusdt");
-    console.log("STATUS:", res.status);
-    const json = await res.json();
-    console.log("API RESPONSE RECEIVED");
+
+console.log("STATUS:", res.status);
+
+const json = await res.json();
+console.log("API RESPONSE RECEIVED");
 
     const normalizedCandles: Candle[] = json.data; // 500 کندل Normalized
 

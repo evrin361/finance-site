@@ -13,6 +13,7 @@ import { generateTradePlan } from "./tradePlanningEngine";
 import { generateCapitalManagement } from "./capitalManagementEngine";
 import { generatePremiumLayer } from "./premiumLayerEngine";
 import { generateMidTermAnalysis } from "./midTermAnalysisEngine";
+import { generateConfidence } from "./confidenceEngine";
 
 export interface SMCOutput {
   marketStructure: string;
@@ -45,9 +46,12 @@ export interface SMCOutput {
   stopLossManagement: string;
   positionManagement: string;
   marketStatus: string;
-  confidenceLevel: number;
-  whyAnalysis: string;
+confidenceLevel: number;
+confidenceReason: string;
+whyAnalysis: string;
+
   
+
 }
 
 export function runSMCEngine(symbol: string, candles: Candle[]): SMCOutput {
@@ -99,6 +103,7 @@ const scenarios = generateScenarios({
   marketStatus: "Neutral",
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
+confidenceReason: "Initial Skeleton",
 });
 
 
@@ -163,6 +168,7 @@ const riskRewardOutput = calculateRiskReward({
   marketStatus: "Neutral",
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
+confidenceReason: "Initial Skeleton",
 });
 const tradePlanOutput = generateTradePlan({
   marketStructure: marketStructureData.marketStructure,
@@ -197,6 +203,7 @@ const tradePlanOutput = generateTradePlan({
   marketStatus: "Neutral",
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
+confidenceReason: "Initial Skeleton",
 });
 
 const capitalManagementOutput = generateCapitalManagement({
@@ -232,6 +239,7 @@ const capitalManagementOutput = generateCapitalManagement({
   marketStatus: "Neutral",
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
+confidenceReason: "Initial Skeleton",
 });
 
 
@@ -269,6 +277,7 @@ const engineOutput: SMCOutput = {
   marketStatus: "Neutral",
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
+confidenceReason: "Initial Skeleton",
 };
 
 const premiumLayerOutput = generatePremiumLayer({
@@ -321,7 +330,46 @@ const midTermAnalysis = generateMidTermAnalysis({
   marketStatus: "Neutral",
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
+confidenceReason: "Initial Skeleton",
 });
+
+const confidenceOutput =
+  generateConfidence({
+    marketStructure: marketStructureData.marketStructure,
+    trend: trendData.trend,
+    BOS,
+    CHOCH,
+    buySideLiquidity: liquidity.buySideLiquidity,
+    sellSideLiquidity: liquidity.sellSideLiquidity,
+    liquidityTargets: [],
+    marketPhase: smartMoney.marketPhase,
+    smartMoneyBehavior: smartMoney.smartMoneyBehavior,
+    whaleActivity: smartMoney.whaleActivity,
+    bullishOrderBlocks: orderBlocks.bullishOrderBlocks,
+    bearishOrderBlocks: orderBlocks.bearishOrderBlocks,
+    FVGZones,
+    imbalanceZones: [],
+    aggressiveEntry: riskRewardOutput.entries.aggressive,
+    conservativeEntry: riskRewardOutput.entries.conservative,
+    stopLoss: riskRewardOutput.stopLoss,
+    target1: riskRewardOutput.targets.target1,
+    target2: riskRewardOutput.targets.target2,
+    target3: riskRewardOutput.targets.target3,
+    riskReward: riskRewardOutput.riskReward,
+    capitalManagement: premiumLayerOutput.capitalManagement,
+    positionSizing: premiumLayerOutput.positionSizing,
+    bullishScenario: scenarios[0]?.title ?? "None",
+    bearishScenario: scenarios[1]?.title ?? "None",
+    tradePlan: premiumLayerOutput.tradePlan,
+    profitTakingPlan: premiumLayerOutput.profitTakingPlan,
+    stopLossManagement: premiumLayerOutput.stopLossManagement,
+    positionManagement: premiumLayerOutput.positionManagement,
+    marketStatus: "Neutral",
+    confidenceLevel: 50,
+    whyAnalysis: "Initial Skeleton",
+confidenceReason: "Initial Skeleton",
+    
+  });
 
   return {
     marketStructure: marketStructureData.marketStructure,
@@ -354,8 +402,9 @@ const midTermAnalysis = generateMidTermAnalysis({
     capitalManagement: premiumLayerOutput.capitalManagement,
     positionSizing: premiumLayerOutput.positionSizing,
     marketStatus: "Neutral",
-    confidenceLevel: 50,
-    whyAnalysis: "Initial Skeleton",
+    confidenceLevel: confidenceOutput.confidenceLevel,
+confidenceReason: confidenceOutput.confidenceReason,
+whyAnalysis: "Initial Skeleton",
 
     
 };

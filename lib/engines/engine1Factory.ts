@@ -1,10 +1,13 @@
 import { Candle } from "@/lib/normalizer/normalizeCandle";
 import { SMCAnalysisObject } from "@/lib/types/SMCAnalysisObject";
 import { runSMCEngine } from "@/lib/engines/engine1";
+import { generateMidTermAnalysis } from "@/lib/engines/midTermAnalysisEngine";
 
 export function generateSMCAnalysis(symbol: string, candles: Candle[]): SMCAnalysisObject {
   // اجرای Skeleton موتور 1
   const engineOutput = runSMCEngine(symbol, candles);
+
+const midTermAnalysis = generateMidTermAnalysis(engineOutput);
 
   // تبدیل به SMCAnalysisObject
   const analysis: SMCAnalysisObject = {
@@ -56,10 +59,17 @@ export function generateSMCAnalysis(symbol: string, candles: Candle[]): SMCAnaly
     stop_loss_management: engineOutput.stopLossManagement,
     position_management: engineOutput.positionManagement,
 
-    mid_term_bullish_probability: 50,
-    mid_term_neutral_probability: 0,
-    mid_term_bearish_probability: 50,
-    mid_term_summary: "Initial Skeleton",
+    mid_term_bullish_probability:
+  midTermAnalysis.bullishProbability,
+
+mid_term_neutral_probability:
+  midTermAnalysis.neutralProbability,
+
+mid_term_bearish_probability:
+  midTermAnalysis.bearishProbability,
+
+mid_term_summary:
+  midTermAnalysis.summary,
 
     long_term_bullish_probability: 50,
     long_term_neutral_probability: 0,

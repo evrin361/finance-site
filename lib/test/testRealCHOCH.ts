@@ -6,13 +6,13 @@ async function runCHOCHTest() {
     // گرفتن داده واقعی از API
     const res = await fetch("http://localhost:3000/api/crypto/btcusdt");
 
-console.log("STATUS:", res.status);
+    console.log("STATUS:", res.status);
 
 const json = await res.json();
+
 console.log("API RESPONSE RECEIVED");
 
-    const normalizedCandles: Candle[] = json.data; // 500 کندل Normalized
-
+const normalizedCandles: Candle[] = json.data;
     // تولید اولین SMCAnalysisObject واقعی
     const analysis = generateSMCAnalysis("BTCUSDT", normalizedCandles);
 

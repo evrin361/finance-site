@@ -12,6 +12,7 @@ import { calculateRiskReward } from "./riskRewardEngine";
 import { generateTradePlan } from "./tradePlanningEngine";
 import { generateCapitalManagement } from "./capitalManagementEngine";
 import { generatePremiumLayer } from "./premiumLayerEngine";
+import { generateMidTermAnalysis } from "./midTermAnalysisEngine";
 
 export interface SMCOutput {
   marketStructure: string;
@@ -46,6 +47,7 @@ export interface SMCOutput {
   marketStatus: string;
   confidenceLevel: number;
   whyAnalysis: string;
+  
 }
 
 export function runSMCEngine(symbol: string, candles: Candle[]): SMCOutput {
@@ -286,6 +288,41 @@ const premiumLayerOutput = generatePremiumLayer({
   positionManagement: tradePlanOutput.positionManagement,
 });
 
+const midTermAnalysis = generateMidTermAnalysis({
+  marketStructure: marketStructureData.marketStructure,
+  trend: trendData.trend,
+  BOS,
+  CHOCH,
+  buySideLiquidity: liquidity.buySideLiquidity,
+  sellSideLiquidity: liquidity.sellSideLiquidity,
+  liquidityTargets: [],
+  marketPhase: smartMoney.marketPhase,
+  smartMoneyBehavior: smartMoney.smartMoneyBehavior,
+  whaleActivity: smartMoney.whaleActivity,
+  bullishOrderBlocks: orderBlocks.bullishOrderBlocks,
+  bearishOrderBlocks: orderBlocks.bearishOrderBlocks,
+  FVGZones,
+  imbalanceZones: [],
+  aggressiveEntry: riskRewardOutput.entries.aggressive,
+  conservativeEntry: riskRewardOutput.entries.conservative,
+  stopLoss: riskRewardOutput.stopLoss,
+  target1: riskRewardOutput.targets.target1,
+  target2: riskRewardOutput.targets.target2,
+  target3: riskRewardOutput.targets.target3,
+  riskReward: riskRewardOutput.riskReward,
+  capitalManagement: capitalManagementOutput.capitalManagement,
+  positionSizing: capitalManagementOutput.positionSizing,
+  bullishScenario: scenarios[0]?.title ?? "None",
+  bearishScenario: scenarios[1]?.title ?? "None",
+  tradePlan: tradePlanOutput.tradePlan,
+  profitTakingPlan: tradePlanOutput.profitTakingPlan,
+  stopLossManagement: tradePlanOutput.stopLossManagement,
+  positionManagement: tradePlanOutput.positionManagement,
+  marketStatus: "Neutral",
+  confidenceLevel: 50,
+  whyAnalysis: "Initial Skeleton",
+});
+
   return {
     marketStructure: marketStructureData.marketStructure,
     trend: trendData.trend,
@@ -319,5 +356,7 @@ const premiumLayerOutput = generatePremiumLayer({
     marketStatus: "Neutral",
     confidenceLevel: 50,
     whyAnalysis: "Initial Skeleton",
+
+    
 };
 }

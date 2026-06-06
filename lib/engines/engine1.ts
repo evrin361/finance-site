@@ -14,6 +14,7 @@ import { generateCapitalManagement } from "./capitalManagementEngine";
 import { generatePremiumLayer } from "./premiumLayerEngine";
 import { generateMidTermAnalysis } from "./midTermAnalysisEngine";
 import { generateConfidence } from "./confidenceEngine";
+import { generateLongTermAnalysis } from "./longTermAnalysisEngine";
 
 export interface SMCOutput {
   marketStructure: string;
@@ -49,7 +50,10 @@ export interface SMCOutput {
 confidenceLevel: number;
 confidenceReason: string;
 whyAnalysis: string;
-
+longTermBullishProbability: number;
+longTermNeutralProbability: number;
+longTermBearishProbability: number;
+longTermSummary: string;
   
 
 }
@@ -104,6 +108,11 @@ const scenarios = generateScenarios({
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
 confidenceReason: "Initial Skeleton",
+
+longTermBullishProbability: 50,
+longTermNeutralProbability: 0,
+longTermBearishProbability: 50,
+longTermSummary: "Initial Skeleton",
 });
 
 
@@ -169,6 +178,10 @@ const riskRewardOutput = calculateRiskReward({
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
 confidenceReason: "Initial Skeleton",
+longTermBullishProbability: 50,
+longTermNeutralProbability: 0,
+longTermBearishProbability: 50,
+longTermSummary: "Initial Skeleton",
 });
 const tradePlanOutput = generateTradePlan({
   marketStructure: marketStructureData.marketStructure,
@@ -204,6 +217,10 @@ const tradePlanOutput = generateTradePlan({
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
 confidenceReason: "Initial Skeleton",
+longTermBullishProbability: 50,
+longTermNeutralProbability: 0,
+longTermBearishProbability: 50,
+longTermSummary: "Initial Skeleton",
 });
 
 const capitalManagementOutput = generateCapitalManagement({
@@ -240,6 +257,10 @@ const capitalManagementOutput = generateCapitalManagement({
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
 confidenceReason: "Initial Skeleton",
+longTermBullishProbability: 50,
+longTermNeutralProbability: 0,
+longTermBearishProbability: 50,
+longTermSummary: "Initial Skeleton",
 });
 
 
@@ -278,6 +299,10 @@ const engineOutput: SMCOutput = {
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
 confidenceReason: "Initial Skeleton",
+longTermBullishProbability: 50,
+longTermNeutralProbability: 0,
+longTermBearishProbability: 50,
+longTermSummary: "Initial Skeleton",
 };
 
 const premiumLayerOutput = generatePremiumLayer({
@@ -331,7 +356,14 @@ const midTermAnalysis = generateMidTermAnalysis({
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
 confidenceReason: "Initial Skeleton",
+longTermBullishProbability: 50,
+longTermNeutralProbability: 0,
+longTermBearishProbability: 50,
+longTermSummary: "Initial Skeleton",
 });
+
+const longTermAnalysis =
+  generateLongTermAnalysis(engineOutput);
 
 const confidenceOutput =
   generateConfidence({
@@ -368,6 +400,10 @@ const confidenceOutput =
     confidenceLevel: 50,
     whyAnalysis: "Initial Skeleton",
 confidenceReason: "Initial Skeleton",
+longTermBullishProbability: 50,
+longTermNeutralProbability: 0,
+longTermBearishProbability: 50,
+longTermSummary: "Initial Skeleton",
     
   });
 
@@ -405,7 +441,17 @@ confidenceReason: "Initial Skeleton",
     confidenceLevel: confidenceOutput.confidenceLevel,
 confidenceReason: confidenceOutput.confidenceReason,
 whyAnalysis: "Initial Skeleton",
+longTermBullishProbability:
+  longTermAnalysis.bullishProbability,
 
+longTermNeutralProbability:
+  longTermAnalysis.neutralProbability,
+
+longTermBearishProbability:
+  longTermAnalysis.bearishProbability,
+
+longTermSummary:
+  longTermAnalysis.summary,
     
 };
 }

@@ -26,6 +26,15 @@ export interface SMCAnalysisObject {
   fvg_zones: string[];
   imbalance_zones: string[];
 
+support_levels: string[];
+
+resistance_levels: string[];
+
+decision_zones: string[];
+
+critical_levels: string[];
+
+
   aggressive_entry: number | null;
   conservative_entry: number | null;
 

@@ -37,6 +37,19 @@ const midTermAnalysis = generateMidTermAnalysis(engineOutput);
     fvg_zones: engineOutput.FVGZones,
     imbalance_zones: engineOutput.imbalanceZones,
 
+support_levels:
+  engineOutput.supportLevels,
+
+resistance_levels:
+  engineOutput.resistanceLevels,
+
+decision_zones:
+  engineOutput.decisionZones,
+
+critical_levels:
+  engineOutput.criticalLevels,
+
+
     aggressive_entry: engineOutput.aggressiveEntry,
     conservative_entry: engineOutput.conservativeEntry,
 
@@ -71,10 +84,17 @@ mid_term_bearish_probability:
 mid_term_summary:
   midTermAnalysis.summary,
 
-    long_term_bullish_probability: 50,
-    long_term_neutral_probability: 0,
-    long_term_bearish_probability: 50,
-    long_term_summary: "Initial Skeleton",
+    long_term_bullish_probability:
+  engineOutput.longTermBullishProbability,
+
+long_term_neutral_probability:
+  engineOutput.longTermNeutralProbability,
+
+long_term_bearish_probability:
+  engineOutput.longTermBearishProbability,
+
+long_term_summary:
+  engineOutput.longTermSummary,
 
     bullish_invalidation: "",
     bearish_invalidation: "",

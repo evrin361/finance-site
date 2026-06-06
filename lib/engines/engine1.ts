@@ -15,6 +15,7 @@ import { generatePremiumLayer } from "./premiumLayerEngine";
 import { generateMidTermAnalysis } from "./midTermAnalysisEngine";
 import { generateConfidence } from "./confidenceEngine";
 import { generateLongTermAnalysis } from "./longTermAnalysisEngine";
+import { generateKeyLevels } from "./keyLevelsEngine";
 
 export interface SMCOutput {
   marketStructure: string;
@@ -54,7 +55,14 @@ longTermBullishProbability: number;
 longTermNeutralProbability: number;
 longTermBearishProbability: number;
 longTermSummary: string;
-  
+
+ supportLevels: string[];
+
+resistanceLevels: string[];
+
+decisionZones: string[];
+
+criticalLevels: string[]; 
 
 }
 
@@ -113,6 +121,11 @@ longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+supportLevels: [],
+resistanceLevels: [],
+decisionZones: [],
+criticalLevels: [],
 });
 
 
@@ -182,6 +195,11 @@ longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+supportLevels: [],
+resistanceLevels: [],
+decisionZones: [],
+criticalLevels: [],
 });
 const tradePlanOutput = generateTradePlan({
   marketStructure: marketStructureData.marketStructure,
@@ -221,6 +239,11 @@ longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+supportLevels: [],
+resistanceLevels: [],
+decisionZones: [],
+criticalLevels: [],
 });
 
 const capitalManagementOutput = generateCapitalManagement({
@@ -261,6 +284,11 @@ longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+supportLevels: [],
+resistanceLevels: [],
+decisionZones: [],
+criticalLevels: [],
 });
 
 
@@ -303,6 +331,11 @@ longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+supportLevels: [],
+resistanceLevels: [],
+decisionZones: [],
+criticalLevels: [],
 };
 
 const premiumLayerOutput = generatePremiumLayer({
@@ -360,10 +393,23 @@ longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+supportLevels: [],
+resistanceLevels: [],
+decisionZones: [],
+criticalLevels: [],
 });
+
+
 
 const longTermAnalysis =
   generateLongTermAnalysis(engineOutput);
+
+  
+const keyLevels =
+  generateKeyLevels(engineOutput);
+
+
 
 const confidenceOutput =
   generateConfidence({
@@ -404,9 +450,16 @@ longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+supportLevels: [],
+resistanceLevels: [],
+decisionZones: [],
+criticalLevels: [],
     
   });
 
+
+  
   return {
     marketStructure: marketStructureData.marketStructure,
     trend: trendData.trend,
@@ -452,6 +505,14 @@ longTermBearishProbability:
 
 longTermSummary:
   longTermAnalysis.summary,
+
+  supportLevels: keyLevels.supportLevels,
+
+resistanceLevels: keyLevels.resistanceLevels,
+
+decisionZones: keyLevels.decisionZones,
+
+criticalLevels: keyLevels.criticalLevels,
     
 };
 }

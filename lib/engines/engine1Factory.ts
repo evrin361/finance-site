@@ -3,12 +3,14 @@ import { SMCAnalysisObject } from "@/lib/types/SMCAnalysisObject";
 import { runSMCEngine } from "@/lib/engines/engine1";
 import { generateMidTermAnalysis } from "@/lib/engines/midTermAnalysisEngine";
 import { generateInvalidation } from "./invalidationEngine";
+import { generateExecutiveSummaryV2 } from "@/lib/engines/executiveSummaryEngine";
 
 export function generateSMCAnalysis(symbol: string, candles: Candle[]): SMCAnalysisObject {
   // اجرای Skeleton موتور 1
   const engineOutput = runSMCEngine(symbol, candles);
 const invalidationOutput = generateInvalidation(engineOutput);
 const midTermAnalysis = generateMidTermAnalysis(engineOutput);
+const executiveSummaryOutput = generateExecutiveSummaryV2(engineOutput);
 
   // تبدیل به SMCAnalysisObject
   const analysis: SMCAnalysisObject = {
@@ -74,40 +76,43 @@ critical_levels:
     position_management: engineOutput.positionManagement,
 
     mid_term_bullish_probability:
-  midTermAnalysis.bullishProbability,
+    midTermAnalysis.bullishProbability,
 
-mid_term_neutral_probability:
-  midTermAnalysis.neutralProbability,
+    mid_term_neutral_probability:
+    midTermAnalysis.neutralProbability,
 
-mid_term_bearish_probability:
-  midTermAnalysis.bearishProbability,
+    mid_term_bearish_probability:
+    midTermAnalysis.bearishProbability,
 
-mid_term_summary:
-  midTermAnalysis.summary,
+    mid_term_summary:
+    midTermAnalysis.summary,
 
     long_term_bullish_probability:
-  engineOutput.longTermBullishProbability,
+    engineOutput.longTermBullishProbability,
 
-long_term_neutral_probability:
-  engineOutput.longTermNeutralProbability,
+    long_term_neutral_probability:
+    engineOutput.longTermNeutralProbability,
 
-long_term_bearish_probability:
-  engineOutput.longTermBearishProbability,
+    long_term_bearish_probability:
+    engineOutput.longTermBearishProbability,
 
-long_term_summary:
-  engineOutput.longTermSummary,
-
-    
-
-    executive_summary: "Initial Skeleton Analysis",
+    long_term_summary:
+    engineOutput.longTermSummary,
 
     market_status: "Neutral",
     analysis_confidence: 50,
     trade_risk: "Medium",
 
-    bullish_invalidation: invalidationOutput.bullishInvalidation,
-    bearish_invalidation: invalidationOutput.bearishInvalidation,
-    invalidation_reason: invalidationOutput.invalidationReason,
+    executive_summary: executiveSummaryOutput.summary,
+
+    bullish_invalidation:
+    invalidationOutput.bullishInvalidation,
+
+    bearish_invalidation:
+    invalidationOutput.bearishInvalidation,
+
+    invalidation_reason:
+    invalidationOutput.invalidationReason
       };
 
   return analysis;

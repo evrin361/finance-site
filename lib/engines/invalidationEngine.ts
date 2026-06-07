@@ -29,6 +29,40 @@ export function generateInvalidation(
     invalidationReason = "Market structure shifted against bearish scenario";
   }
 
+// Liquidity Sweep Validation
+
+const buyLiquidityHit =
+  engineOutput.buySideLiquidity.length > 0;
+
+const sellLiquidityHit =
+  engineOutput.sellSideLiquidity.length > 0;
+
+if (
+  engineOutput.marketStructure === "Bullish" &&
+  sellLiquidityHit
+) {
+  bullishInvalidation =
+    "Sell Side Liquidity Sweep";
+
+  invalidationReason =
+    "Liquidity swept against bullish structure";
+}
+
+if (
+  engineOutput.marketStructure === "Bearish" &&
+  buyLiquidityHit
+) {
+  bearishInvalidation =
+    "Buy Side Liquidity Sweep";
+
+  invalidationReason =
+    "Liquidity swept against bearish structure";
+}
+
+
+
+
+
   return {
     bullishInvalidation,
     bearishInvalidation,

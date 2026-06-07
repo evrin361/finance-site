@@ -2,11 +2,12 @@ import { Candle } from "@/lib/normalizer/normalizeCandle";
 import { SMCAnalysisObject } from "@/lib/types/SMCAnalysisObject";
 import { runSMCEngine } from "@/lib/engines/engine1";
 import { generateMidTermAnalysis } from "@/lib/engines/midTermAnalysisEngine";
+import { generateInvalidation } from "./invalidationEngine";
 
 export function generateSMCAnalysis(symbol: string, candles: Candle[]): SMCAnalysisObject {
   // اجرای Skeleton موتور 1
   const engineOutput = runSMCEngine(symbol, candles);
-
+const invalidationOutput = generateInvalidation(engineOutput);
 const midTermAnalysis = generateMidTermAnalysis(engineOutput);
 
   // تبدیل به SMCAnalysisObject
@@ -96,15 +97,18 @@ long_term_bearish_probability:
 long_term_summary:
   engineOutput.longTermSummary,
 
-    bullish_invalidation: "",
-    bearish_invalidation: "",
+    
 
     executive_summary: "Initial Skeleton Analysis",
 
     market_status: "Neutral",
     analysis_confidence: 50,
     trade_risk: "Medium",
-  };
+
+    bullish_invalidation: invalidationOutput.bullishInvalidation,
+    bearish_invalidation: invalidationOutput.bearishInvalidation,
+    invalidation_reason: invalidationOutput.invalidationReason,
+      };
 
   return analysis;
 }

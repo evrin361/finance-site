@@ -16,6 +16,7 @@ import { generateMidTermAnalysis } from "./midTermAnalysisEngine";
 import { generateConfidence } from "./confidenceEngine";
 import { generateLongTermAnalysis } from "./longTermAnalysisEngine";
 import { generateKeyLevels } from "./keyLevelsEngine";
+import { generateInvalidation } from "./invalidationEngine";
 
 export interface SMCOutput {
   marketStructure: string;
@@ -56,6 +57,12 @@ longTermNeutralProbability: number;
 longTermBearishProbability: number;
 longTermSummary: string;
 
+bullishInvalidation: string;
+
+bearishInvalidation: string;
+
+invalidationReason: string;
+
  supportLevels: string[];
 
 resistanceLevels: string[];
@@ -63,6 +70,8 @@ resistanceLevels: string[];
 decisionZones: string[];
 
 criticalLevels: string[]; 
+
+
 
 }
 
@@ -121,6 +130,11 @@ longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+bullishInvalidation: "",
+bearishInvalidation: "",
+invalidationReason: "Initial Skeleton",
+
 
 supportLevels: [],
 resistanceLevels: [],
@@ -196,6 +210,11 @@ longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
 
+bullishInvalidation: "",
+bearishInvalidation: "",
+invalidationReason: "Initial Skeleton",
+
+
 supportLevels: [],
 resistanceLevels: [],
 decisionZones: [],
@@ -239,6 +258,11 @@ longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+bullishInvalidation: "",
+bearishInvalidation: "",
+invalidationReason: "Initial Skeleton",
+
 
 supportLevels: [],
 resistanceLevels: [],
@@ -285,6 +309,11 @@ longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
 
+
+bullishInvalidation: "",
+bearishInvalidation: "",
+invalidationReason: "Initial Skeleton",
+
 supportLevels: [],
 resistanceLevels: [],
 decisionZones: [],
@@ -327,10 +356,15 @@ const engineOutput: SMCOutput = {
   confidenceLevel: 50,
   whyAnalysis: "Initial Skeleton",
 confidenceReason: "Initial Skeleton",
+
 longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+bullishInvalidation: "",
+bearishInvalidation: "",
+invalidationReason: "Initial Skeleton",
 
 supportLevels: [],
 resistanceLevels: [],
@@ -394,6 +428,13 @@ longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
 
+bullishInvalidation: "",
+
+bearishInvalidation: "",
+
+invalidationReason: "Initial Skeleton",
+
+
 supportLevels: [],
 resistanceLevels: [],
 decisionZones: [],
@@ -409,6 +450,9 @@ const longTermAnalysis =
 const keyLevels =
   generateKeyLevels(engineOutput);
 
+
+const invalidation =
+  generateInvalidation(engineOutput);
 
 
 const confidenceOutput =
@@ -450,6 +494,10 @@ longTermBullishProbability: 50,
 longTermNeutralProbability: 0,
 longTermBearishProbability: 50,
 longTermSummary: "Initial Skeleton",
+
+bullishInvalidation: "",
+bearishInvalidation: "",
+invalidationReason: "Initial Skeleton",
 
 supportLevels: [],
 resistanceLevels: [],
@@ -505,6 +553,11 @@ longTermBearishProbability:
 
 longTermSummary:
   longTermAnalysis.summary,
+
+bullishInvalidation: "",
+bearishInvalidation: "",
+invalidationReason: "Initial Skeleton",
+
 
   supportLevels: keyLevels.supportLevels,
 

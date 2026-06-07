@@ -72,9 +72,13 @@ critical_levels: string[];
   bullish_invalidation: string;
   bearish_invalidation: string;
 
+invalidation_reason: string;
+
   executive_summary: string;
 
   market_status: string;
   analysis_confidence: number;
   trade_risk: string;
+
+  
 }

@@ -4,13 +4,25 @@ import { runSMCEngine } from "@/lib/engines/engine1";
 import { generateMidTermAnalysis } from "@/lib/engines/midTermAnalysisEngine";
 import { generateInvalidation } from "./invalidationEngine";
 import { generateExecutiveSummaryV2 } from "@/lib/engines/executiveSummaryEngine";
+import { generateConfidence } from "@/lib/engines/confidenceEngine";
+import { calculateRisk } from "@/lib/engines/riskEngine";
 
 export function generateSMCAnalysis(symbol: string, candles: Candle[]): SMCAnalysisObject {
   // اجرای Skeleton موتور 1
   const engineOutput = runSMCEngine(symbol, candles);
 const invalidationOutput = generateInvalidation(engineOutput);
 const midTermAnalysis = generateMidTermAnalysis(engineOutput);
-const executiveSummaryOutput = generateExecutiveSummaryV2(engineOutput);
+const confidenceOutput =
+  generateConfidence(engineOutput);
+
+const riskOutput =
+  calculateRisk(engineOutput);
+const executiveSummaryOutput =
+  generateExecutiveSummaryV2(
+    engineOutput,
+    confidenceOutput,
+    riskOutput
+  );
 
   // تبدیل به SMCAnalysisObject
   const analysis: SMCAnalysisObject = {
@@ -99,9 +111,14 @@ critical_levels:
     long_term_summary:
     engineOutput.longTermSummary,
 
-    market_status: "Neutral",
-    analysis_confidence: 50,
-    trade_risk: "Medium",
+    analysis_confidence:
+  confidenceOutput.confidenceLevel,
+
+market_status:
+  riskOutput.marketStatus,
+
+trade_risk:
+  riskOutput.riskReason,
 
     executive_summary: executiveSummaryOutput.summary,
 

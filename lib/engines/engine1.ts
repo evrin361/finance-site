@@ -539,7 +539,7 @@ criticalLevels: [],
     capitalManagement: premiumLayerOutput.capitalManagement,
     positionSizing: premiumLayerOutput.positionSizing,
     marketStatus: "Neutral",
-    confidenceLevel: confidenceOutput.confidenceLevel,
+confidenceLevel: confidenceOutput.confidenceLevel,
 confidenceReason: confidenceOutput.confidenceReason,
 whyAnalysis: "Initial Skeleton",
 longTermBullishProbability:

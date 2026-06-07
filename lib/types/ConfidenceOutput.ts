@@ -1,4 +1,4 @@
 export interface ConfidenceOutput {
-  confidence: number;
-  reason: string;
+  confidenceLevel: number;
+  confidenceReason: string;
 }

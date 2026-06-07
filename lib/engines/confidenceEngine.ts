@@ -1,3 +1,16 @@
+/*import { SMCOutput } from "./engine1";
+import { ConfidenceOutput } from "../types/ConfidenceOutput";
+
+export function generateConfidence(
+  engineOutput: SMCOutput
+): ConfidenceOutput {
+
+  return {
+    analysisConfidence: 50,
+    confidenceReason: "Initial Skeleton",
+  };
+
+} */
 import { SMCOutput } from "./engine1";
 import { ConfidenceOutput } from "../types/ConfidenceOutput";
 
@@ -60,4 +73,4 @@ export function generateConfidence(
     confidenceLevel: score,
     confidenceReason: reasons.join(" | "),
   };
-}
+} 

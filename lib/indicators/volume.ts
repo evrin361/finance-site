@@ -13,8 +13,8 @@ export function calculateVolume(
 
   let volume_strength: "high" | "medium" | "low" = "medium";
 
-  if (last > 1.5 * avg) volume_strength = "high";
-  else if (last < 0.5 * avg) volume_strength = "low";
+if (last > avg * 1.2) volume_strength = "high";
+else if (last < avg * 0.8) volume_strength = "low";
 
   return {
     volume: last,

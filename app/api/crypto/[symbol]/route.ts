@@ -16,15 +16,26 @@ export async function GET(
 
   const response = await fetch(url);
 
-  if (!response.ok) {
-    return NextResponse.json(
-      {
-        success: false,
-        error: "Binance API Error",
-      },
-      { status: 500 }
-    );
-  }
+console.log("BINANCE STATUS:", response.status);
+
+if (!response.ok) {
+
+  const errorText =
+    await response.text();
+
+  console.log(
+    "BINANCE ERROR:",
+    errorText
+  );
+
+  return NextResponse.json(
+    {
+      success: false,
+      error: errorText,
+    },
+    { status: 500 }
+  );
+}
 
   const data = await response.json();
   const normalized = normalizeCandles(data);

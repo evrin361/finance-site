@@ -4,7 +4,7 @@ interface BollingerResult {
   upper: number;
   middle: number;
   lower: number;
-  position: "upper_band" | "middle" | "lower";
+  position: "upper" | "middle" | "lower";
 }
 
 export function calculateBollinger(
@@ -22,9 +22,15 @@ export function calculateBollinger(
 
   const last = result[result.length - 1];
 
-  let position: "upper_band" | "middle" | "lower" = "middle";
+let position:
+  "upper"
+  | "middle"
+  | "lower"
+= "middle";
 
-  if (prices[prices.length - 1] > last.upper) position = "upper_band";
+  if (prices[prices.length - 1] > last.upper)
+  position = "upper";
+
   else if (prices[prices.length - 1] < last.lower) position = "lower";
   else position = "middle";
 

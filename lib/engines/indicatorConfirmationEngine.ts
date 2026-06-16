@@ -79,38 +79,49 @@ if (indicators.rsiSignal === "oversold") {
 }
 
 
-if (indicators.volumeStrength === "high") {
-  bullishSignals++;
-  confidenceScore += 15;
-} else if (indicators.volumeStrength === "low") {
-  bearishSignals++;
-  confidenceScore += 15;
-} else {
-  neutralSignals++;
+if (indicators.volumeStrength !== undefined) {
+
+  if (indicators.volumeStrength === "high") {
+    bullishSignals++;
+    confidenceScore += 15;
+  } else if (indicators.volumeStrength === "low") {
+    bearishSignals++;
+    confidenceScore += 15;
+  } else {
+    neutralSignals++;
+  }
+
 }
 
 
-if (indicators.bollingerPosition === "lower") {
-  bullishSignals++;
-  confidenceScore += 10;
-} else if (indicators.bollingerPosition === "upper") {
-  bearishSignals++;
-  confidenceScore += 10;
-} else {
-  neutralSignals++;
+if (indicators.bollingerPosition !== undefined) {
+
+  if (indicators.bollingerPosition === "lower") {
+    bullishSignals++;
+    confidenceScore += 10;
+  } else if (indicators.bollingerPosition === "upper") {
+    bearishSignals++;
+    confidenceScore += 10;
+  } else {
+    neutralSignals++;
+  }
+
 }
 
 
 
+if (indicators.stochasticSignal !== undefined) {
 
-if (indicators.stochasticSignal === "oversold") {
-  bullishSignals++;
-  confidenceScore += 10;
-} else if (indicators.stochasticSignal === "overbought") {
-  bearishSignals++;
-  confidenceScore += 10;
-} else {
-  neutralSignals++;
+  if (indicators.stochasticSignal === "oversold") {
+    bullishSignals++;
+    confidenceScore += 10;
+  } else if (indicators.stochasticSignal === "overbought") {
+    bearishSignals++;
+    confidenceScore += 10;
+  } else {
+    neutralSignals++;
+  }
+
 }
 
 let finalBias: "bullish" | "bearish" | "neutral" =

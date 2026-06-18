@@ -7,6 +7,9 @@ export interface IndicatorConfirmationObject {
 
   neutralSignals: number;
 
+
+
+  
   finalBias:
     | "bullish"
     | "bearish"
@@ -34,7 +37,10 @@ bollingerPosition?:
   | "middle"
   | "lower";
 
-
+atrVolatility?:
+  | "high"
+  | "medium"
+  | "low";
   
 
 }
@@ -123,6 +129,20 @@ if (indicators.stochasticSignal !== undefined) {
   }
 
 }
+
+
+if (indicators.atrVolatility !== undefined) {
+  if (indicators.atrVolatility === "high") {
+    bullishSignals++;
+    confidenceScore += 10;
+  } else if (indicators.atrVolatility === "low") {
+    bearishSignals++;
+    confidenceScore += 10;
+  } else {
+    neutralSignals++;
+  }
+}
+
 
 let finalBias: "bullish" | "bearish" | "neutral" =
   "neutral";

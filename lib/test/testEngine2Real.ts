@@ -12,6 +12,13 @@ async function run() {
     "http://localhost:3000/api/crypto/btcusdt"
   );
 
+const text = await res.text();
+
+console.log(text);
+
+return;
+
+
   const json = await res.json();
 
   if (!json.success) {
@@ -63,6 +70,11 @@ async function run() {
 
       bollingerPosition:
         indicators.bollingerPosition,
+
+
+atrVolatility:
+  indicators.atrVolatility,
+
     });
 
   console.log("");

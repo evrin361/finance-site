@@ -4,7 +4,7 @@ import { calculateMACD } from "./macd";
 import { calculateVolume } from "./volume";
 import { calculateBollinger } from "./bollinger";
 import { calculateStochastic } from "./stochastic";
-
+import { calculateATR } from "./atr";
 export interface IndicatorObject {
 ema20: number | null;
 ema50: number | null;
@@ -58,7 +58,21 @@ stochasticSignal:
 | "overbought"
 | "oversold"
 | "neutral";
+
+atr: number | null;
+
+atrVolatility:
+  | "high"
+  | "medium"
+  | "low";
+
+
+
 }
+
+
+
+
 
 interface IndicatorInput {
 closes: number[];
@@ -116,6 +130,13 @@ data.lows,
 data.closes
 );
 
+const atrResult = calculateATR(
+  data.highs,
+  data.lows,
+  data.closes
+);
+
+
 return {
 ema20: emas.ema20,
 ema50: emas.ema50,
@@ -166,6 +187,13 @@ stochasticD:
 
 stochasticSignal:
   stochasticResult?.signal ?? "neutral",
+
+
+  atr:
+  atrResult?.value ?? null,
+
+atrVolatility:
+  atrResult?.volatility ?? "medium",
 
 
 };

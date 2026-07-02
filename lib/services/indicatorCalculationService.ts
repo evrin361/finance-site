@@ -9,8 +9,10 @@ export async function indicatorCalculationService(candles: Candle[]): Promise<In
         ema200: 0,
         rsi: { value: 0, signal: "neutral" },
         macd: { macd: 0, signal: 0, histogram: 0, trend: "neutral" },
-        volume_analysis: { volume: 0, volume_strength: "normal" },
-        atr: { value: 0, volatility: "medium" },
+volume_analysis: {
+  volume: 0,
+  volume_strength: "medium",
+},        atr: { value: 0, volatility: "medium" },
         bollinger_bands: { upper: 0, middle: 0, lower: 0, position: "middle" },
         stochastic: { k: 0, d: 0, signal: "neutral" },
     };

@@ -2,8 +2,8 @@ import { runMergeEngine } from "../engines/mergeEngine";
 import { SMCAnalysisObject } from "../types/SMCAnalysisObject";
 import { IndicatorConfirmationObject } from "../types/IndicatorConfirmationObject";
 
-const smc: SMCAnalysisObject = {
-  analysis_id: "test-001",
+export const smc: SMCAnalysisObject = {
+    analysis_id: "test-001",
   created_at: new Date().toISOString(),
   analysis_date: new Date().toISOString(),
 
@@ -84,8 +84,8 @@ const smc: SMCAnalysisObject = {
   trade_risk: "low",
 };
 
-const confirmation: IndicatorConfirmationObject = {
-  confidence_score: 85,
+export const confirmation: IndicatorConfirmationObject = {
+    confidence_score: 85,
 
   signal_alignment: "bullish",
 

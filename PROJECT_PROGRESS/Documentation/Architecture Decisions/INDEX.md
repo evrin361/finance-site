@@ -7,4 +7,4 @@ ADR-002
 Executive Summary removed from Engine1
 
 ADR-003
-Market Status / Analysis Confidence / Trade Risk belong to Insight Layer
+Market Status / Analysis Confidence / Trade Risk belong to Insight Layerبه 

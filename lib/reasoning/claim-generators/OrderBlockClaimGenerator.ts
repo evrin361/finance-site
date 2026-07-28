@@ -26,7 +26,10 @@ export function generateOrderBlockClaim(
 
     type: "ORDER_BLOCK_CLAIM",
 
-    result: "Order Blocks have been identified.",
+    result:
+      payload.bullish.length > 0
+        ? "BULLISH_OB_PRESENT"
+         : "BEARISH_OB_PRESENT",
 
     confidence: 90,
 

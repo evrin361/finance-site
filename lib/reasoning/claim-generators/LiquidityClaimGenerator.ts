@@ -22,12 +22,16 @@ export function generateLiquidityClaim(
   const payload =
     liquidityFinding.payload as LiquidityPayload;
 
-  return {
+return {
   id: crypto.randomUUID(),
 
   type: "LIQUIDITY_CLAIM",
 
-  result: "Liquidity zones have been identified.",
+  result:
+    payload.buy_side.length >
+    payload.sell_side.length
+      ? "BUY_SIDE_DOMINANT"
+      : "SELL_SIDE_DOMINANT",
 
   confidence: 90,
 
